@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/home_menu_item"
+            android:icon="@drawable/home"
+            android:title="Home" />
+        <item
+            android:id="@+id/todo_menu_item"
+            android:icon="@drawable/todo"
+            android:title="Todo" />
+        <item
+            android:id="@+id/assignment_menu_item"
+            android:icon="@drawable/assignment"
+            android:title="Assignment" />
+        <item
+            android:id="@+id/weblink_menu_item"
+            android:icon="@drawable/web_link"
+            android:title="WebLink" />
+        <item
+            android:id="@+id/mail_menu_item"
+            android:icon="@drawable/mail"
+            android:title="Mail" />
+        <item
+            android:id="@+id/drive_menu_item"
+            android:icon="@drawable/drive"
+            android:title="Drive" />
+        <item
+            android:id="@+id/timetable_menu_item"
+            android:icon="@drawable/schedule"
+            android:title="Timetable" />
+        <item
+            android:id="@+id/calendar_menu_item"
+            android:icon="@drawable/time_table"
+            android:title="Calendar" />
+    </group>
+</menu>

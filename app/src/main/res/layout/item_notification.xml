@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="15dp"
+    android:paddingTop="10dp">
+
+    <TextView
+        android:id="@+id/notification_content_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="15dp"
+        android:layout_toLeftOf="@+id/dot_view"
+        android:textColor="#3b3b3b"
+        android:textSize="14sp"
+        tools:text="Nice, This is test notification" />
+
+    <TextView
+        android:id="@+id/time_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/notification_content_text_view"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="2dp"
+        android:textColor="#c4c4c4"
+        android:textSize="13sp"
+        tools:text="just now" />
+
+    <View
+        android:id="@+id/dot_view"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/rounded_dot_drawable" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/time_text_view"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="10dp"
+        android:background="#b4cccccc" />
+</RelativeLayout>
