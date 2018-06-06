@@ -13,18 +13,26 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
+
 import java.util.List;
 
 public class TodoFragment extends AppCompatActivity {
 
     TodoAdapter adapter;
     private List<TodoModel> todoList;
+    private FirebaseFirestore db;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_todo);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        db = FirebaseFirestore.getInstance();
+
         ListView todoListView = findViewById(R.id.todo_list_view);
         adapter = new TodoAdapter(todoList);
         todoListView.setAdapter(adapter);
@@ -45,5 +53,14 @@ public class TodoFragment extends AppCompatActivity {
             startActivity(new Intent(this, ActivityAddTodo.class));
         }
         return true;
+    }
+
+    private void getTodoList() {
+        db.collection("users").document("todo").collection("data").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+
+            }
+        });
     }
 }
