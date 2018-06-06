@@ -6,7 +6,10 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import edu.schoolapp.Model.TodoModel;
 
 public class TodoAdapter extends BaseAdapter {
 
@@ -37,11 +40,21 @@ public class TodoAdapter extends BaseAdapter {
             convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_todo, parent, false);
             TodoViewHolder viewHolder = new TodoViewHolder(convertView);
             convertView.setTag(viewHolder);
-            viewHolder.setupData((TodoModel) getItem(position)); //TODO Sent data to view holder
+            viewHolder.setupData((TodoModel) getItem(position));
             return convertView;
         }
         ((TodoViewHolder) convertView.getTag()).setupData((TodoModel) getItem(position));
         return convertView;
+    }
+
+    public void updateData(List<TodoModel> list) {
+        if (todoList == null) {
+            todoList = new ArrayList<>();
+        } else {
+            todoList.clear();
+        }
+        todoList.addAll(list);
+        notifyDataSetChanged();
     }
 
     static class TodoViewHolder {

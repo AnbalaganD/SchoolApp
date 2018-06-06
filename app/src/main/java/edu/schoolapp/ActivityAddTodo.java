@@ -14,8 +14,14 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import edu.schoolapp.Model.TodoModel;
 
 public class ActivityAddTodo extends AppCompatActivity {
 
@@ -41,7 +47,7 @@ public class ActivityAddTodo extends AppCompatActivity {
         findViewById(R.id.add_todo_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                addTodoItem();
             }
         });
     }
@@ -56,14 +62,12 @@ public class ActivityAddTodo extends AppCompatActivity {
 
     private void addTodoItem() {
         if (ValidateData()) {
-            db.collection("users").document(SchoolApp.getToken()).collection("todo").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                    if(task.isSuccessful()) {
-
-                    }
-                }
-            });
+            CollectionReference todolist = db.collection("users").document(SchoolApp.getToken()).collection("primaryMenus").document("todo").collection("todolist");
+            Map<String, Object> todoModel = new HashMap<>();
+            todoModel.put("title", titleEditText.getText().toString());
+            todoModel.put("description", descriptionEditText.getText().toString());
+            todoModel.put("date", "1/5/2018");
+            todolist.add(todoModel);
         }
     }
 

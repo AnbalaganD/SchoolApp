@@ -1,4 +1,4 @@
-package edu.schoolapp;
+package edu.schoolapp.Model;
 
 import com.google.firebase.database.IgnoreExtraProperties;
 

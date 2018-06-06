@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PrimaryMenuAdapter extends RecyclerView.Adapter<PrimaryMenuAdapter.PrimaryMenuViewHolder> {
@@ -35,6 +36,16 @@ public class PrimaryMenuAdapter extends RecyclerView.Adapter<PrimaryMenuAdapter.
     @Override
     public int getItemCount() {
         return primaryMenuList == null ? 0 : primaryMenuList.size();
+    }
+
+    public void updateData(List<PrimaryMenuModel> list) {
+        if (this.primaryMenuList == null) {
+            this.primaryMenuList = new ArrayList<>();
+        } else {
+            this.primaryMenuList.clear();
+        }
+        this.primaryMenuList.addAll(list);
+        notifyDataSetChanged();
     }
 
     class PrimaryMenuViewHolder extends RecyclerView.ViewHolder {

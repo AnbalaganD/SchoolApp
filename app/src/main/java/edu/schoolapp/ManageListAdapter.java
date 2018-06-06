@@ -7,13 +7,14 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ManageListAdapter extends BaseAdapter {
 
-    private List<ManageListModel> manageList;
+    private List<PrimaryMenuModel> manageList;
 
-    public ManageListAdapter(List<ManageListModel> manageList) {
+    public ManageListAdapter(List<PrimaryMenuModel> manageList) {
         this.manageList = manageList;
     }
 
@@ -38,11 +39,21 @@ public class ManageListAdapter extends BaseAdapter {
             convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_manage_list, parent, false);
             ManageListViewHolder viewHolder = new ManageListViewHolder(convertView);
             convertView.setTag(viewHolder);
-            viewHolder.setupData((ManageListModel) getItem(position)); //TODO Sent data to view holder
+            viewHolder.setupData((PrimaryMenuModel) getItem(position));
             return convertView;
         }
-        ((ManageListViewHolder) convertView.getTag()).setupData((ManageListModel) getItem(position));
+        ((ManageListViewHolder) convertView.getTag()).setupData((PrimaryMenuModel) getItem(position));
         return convertView;
+    }
+
+    public void updateData(List<PrimaryMenuModel> list) {
+        if (manageList == null) {
+            manageList = new ArrayList<>();
+        } else {
+            manageList.clear();
+        }
+        manageList.addAll(list);
+        notifyDataSetChanged();
     }
 
     static class ManageListViewHolder {
@@ -56,10 +67,9 @@ public class ManageListAdapter extends BaseAdapter {
             this.addOrRemoveImageView = view.findViewById(R.id.add_or_remove_image_view);
         }
 
-        void setupData(ManageListModel data) {
-            //TODO setup data here
-            manageListImageView.setImageResource(data.getManageListImage());
-            manageListTitle.setText(data.getTitle());
+        void setupData(PrimaryMenuModel data) {
+            manageListImageView.setImageResource(data.getMenuImageResource());
+            manageListTitle.setText(data.getMenuName());
             addOrRemoveImageView.setImageResource(data.isSelected() ? R.drawable.minus : R.drawable.plus);
         }
     }
