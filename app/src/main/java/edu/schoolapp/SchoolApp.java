@@ -32,7 +32,7 @@ public class SchoolApp extends Application {
     }
 
     public static String getToken() {
-        return "106209978503919811962"; //sharedPreferences.getString("token", null);
+        return sharedPreferences.getString("token", null);
     }
 
     public static void setName(String value) {
