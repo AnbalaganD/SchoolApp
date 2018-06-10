@@ -5,7 +5,7 @@ android {
         config {
             keyAlias 'schoolapp'
             keyPassword 'schoolapp'
-            storeFile file('/Users/admin/Desktop/KeyStore/schoolapp.keystore')
+            storeFile file('C:/Users/janak_000/Downloads/Keystore/schoolapp.keystore')
             storePassword 'schoolapp'
         }
     }
