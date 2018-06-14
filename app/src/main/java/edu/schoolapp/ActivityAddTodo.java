@@ -68,7 +68,15 @@ public class ActivityAddTodo extends AppCompatActivity {
             todoModel.put("description", descriptionEditText.getText().toString());
             todoModel.put("date", "1/5/2018");
             todolist.add(todoModel);
+            Toast.makeText(this, "Add todo successfully...", Toast.LENGTH_SHORT).show();
+            clearData();
         }
+    }
+
+    private void clearData() {
+        titleEditText.setText("");
+        descriptionEditText.setText("");
+        dateEditText.setText("Select date");
     }
 
     private boolean ValidateData() {
