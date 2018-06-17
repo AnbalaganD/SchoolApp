@@ -67,6 +67,8 @@ public class SettingsActivity extends AppCompatActivity {
                     googleApiClient.disconnect();
                     googleApiClient.connect();
 
+                    SchoolApp.clearSharedPreference();
+
                     Intent intent = new Intent(SettingsActivity.this, LoginActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);

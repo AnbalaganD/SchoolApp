@@ -3,9 +3,11 @@ package edu.schoolapp;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.customtabs.CustomTabsIntent;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -97,9 +99,9 @@ public class HomeFragment extends AppCompatActivity implements PrimaryMenuSelect
         if (menuModel.getMenuType() == PrimaryMenuType.TODO) {
             startActivity(new Intent(this, TodoFragment.class));
         } else if (menuModel.getMenuType() == PrimaryMenuType.ASSIGNMENT) {
-
+            startActivity(new Intent(this, AssignmentActivity.class));
         } else if (menuModel.getMenuType() == PrimaryMenuType.WEBLINK) {
-
+            openWebLink();
         } else if (menuModel.getMenuType() == PrimaryMenuType.MAIL) {
             openGmailApp();
         } else if (menuModel.getMenuType() == PrimaryMenuType.DRIVE) {
@@ -109,6 +111,16 @@ public class HomeFragment extends AppCompatActivity implements PrimaryMenuSelect
         } else if (menuModel.getMenuType() == PrimaryMenuType.CALENDAR) {
 
         }
+    }
+
+    private void openWebLink() {
+        String url = "https://www.google.com/";
+        CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder()
+                .addDefaultShareMenuItem()
+                .setToolbarColor(getResources().getColor(R.color.colorPrimary))
+                .setShowTitle(true)
+                .build();
+        customTabsIntent.launchUrl(this, Uri.parse(url));
     }
 
     private void openGmailApp() {

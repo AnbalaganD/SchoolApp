@@ -64,4 +64,11 @@ public class SchoolApp extends Application {
     public static String getProfileUrl() {
         return sharedPreferences.getString("profileUrl", null);
     }
+
+    public static void clearSharedPreference() {
+        setToken(null);
+        setEmail(null);
+        setName(null);
+        setProfileUrl(null);
+    }
 }

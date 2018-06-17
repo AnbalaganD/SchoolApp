@@ -85,7 +85,7 @@ public class ActivityAddTodo extends AppCompatActivity {
             Toast.makeText(this, "Enter Title", Toast.LENGTH_SHORT).show();
             isValid = false;
         } else if (descriptionEditText.getText() == null || descriptionEditText.getText().toString().trim().isEmpty()) {
-            Toast.makeText(this, "Enetr Description", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Enter Description", Toast.LENGTH_SHORT).show();
             isValid = false;
         }
         return isValid;

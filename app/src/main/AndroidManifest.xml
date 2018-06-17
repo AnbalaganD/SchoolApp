@@ -47,5 +47,7 @@
         <activity
             android:name=".ActivityAddTodo"
             android:label="Add Todo" />
+        <activity android:name=".AssignmentActivity" />
+        <activity android:name=".AddAssignmentActivity" />
     </application>
 </manifest>

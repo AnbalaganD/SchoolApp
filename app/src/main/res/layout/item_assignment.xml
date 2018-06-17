@@ -25,12 +25,12 @@
             tools:text="First Assignment" />
 
         <TextView
-            android:id="@+id/date_text_view"
+            android:id="@+id/mark_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#686868"
             android:textSize="13sp"
-            tools:text="6 May 2018" />
+            tools:text="45 out of 50" />
     </LinearLayout>
 
     <TextView
