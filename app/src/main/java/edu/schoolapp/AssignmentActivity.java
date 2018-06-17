@@ -1,6 +1,7 @@
 package edu.schoolapp;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +9,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -38,11 +41,18 @@ public class AssignmentActivity extends AppCompatActivity {
 
         assignmentAdapter = new AssignmentAdapter(null);
         assignmentRecyclerView.setAdapter(assignmentAdapter);
+
+        findViewById(R.id.add_assignment_fab_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(AssignmentActivity.this, AddAssignmentActivity.class));
+            }
+        });
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_add, menu);
+        getMenuInflater().inflate(R.menu.menu_assignment, menu);
         return true;
     }
 
@@ -51,8 +61,9 @@ public class AssignmentActivity extends AppCompatActivity {
         int selectedItemId = item.getItemId();
         if (selectedItemId == android.R.id.home) {
             finish();
-        } else if (selectedItemId == R.id.menu_add) {
-            startActivity(new Intent(this, AddAssignmentActivity.class));
+        } else if (selectedItemId == R.id.status_menu_item) {
+            SchoolApp.data = assignmentList;
+            startActivity(new Intent(this, AssignmentStatusActivity.class));
         }
         return true;
     }

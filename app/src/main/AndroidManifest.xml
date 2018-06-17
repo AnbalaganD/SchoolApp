@@ -47,7 +47,19 @@
         <activity
             android:name=".ActivityAddTodo"
             android:label="Add Todo" />
-        <activity android:name=".AssignmentActivity" />
-        <activity android:name=".AddAssignmentActivity" />
+        <activity
+            android:name=".AssignmentActivity"
+            android:label="Assignment" />
+        <activity
+            android:name=".AddAssignmentActivity"
+            android:label="Add Assignment" />
+        <activity
+            android:name=".AssignmentStatusActivity"
+            android:label="Assignment Status">
+            <intent-filter>
+                <!--<action android:name="android.intent.action.MAIN" />-->
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 </manifest>

@@ -9,6 +9,10 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class SchoolApp extends Application {
 
+    //FIXME we can pass data using intent but its take time to serialize and deserialize so use global property
+    // If we use ViewModel this type of bad style
+    public static Object data;
+
     private static Context appContext;
 
     public static Context getAppContext() {
