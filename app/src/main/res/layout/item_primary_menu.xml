@@ -6,7 +6,8 @@
     android:layout_height="wrap_content"
     android:layout_margin="2dp"
     app:cardCornerRadius="3dp"
-    android:elevation="3dp">
+    android:elevation="3dp"
+    tools:targetApi="lollipop">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -25,7 +26,8 @@
                 android:layout_above="@+id/menu_title"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:src="@drawable/todo" />
+                android:src="@drawable/todo"
+                tools:ignore="ContentDescription" />
 
             <TextView
                 android:id="@+id/menu_title"
@@ -34,7 +36,7 @@
                 android:layout_alignParentBottom="true"
                 android:background="#df5708"
                 android:gravity="center"
-                android:text="TODO"
+                android:text="@string/todo"
                 android:textColor="@android:color/white"
                 android:textSize="14sp"
                 android:textStyle="bold"/>

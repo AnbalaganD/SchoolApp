@@ -4,34 +4,34 @@
         <item
             android:id="@+id/home_menu_item"
             android:icon="@drawable/home"
-            android:title="Home" />
+            android:title="@string/home" />
         <item
             android:id="@+id/todo_menu_item"
             android:icon="@drawable/todo"
-            android:title="Todo" />
+            android:title="@string/menu_todo" />
         <item
             android:id="@+id/assignment_menu_item"
             android:icon="@drawable/assignment"
-            android:title="Assignment" />
+            android:title="@string/assignment" />
         <item
             android:id="@+id/weblink_menu_item"
             android:icon="@drawable/web_link"
-            android:title="WebLink" />
+            android:title="@string/weblink" />
         <item
             android:id="@+id/mail_menu_item"
             android:icon="@drawable/mail"
-            android:title="Mail" />
+            android:title="@string/mail" />
         <item
             android:id="@+id/drive_menu_item"
             android:icon="@drawable/drive"
-            android:title="Drive" />
+            android:title="@string/drive" />
         <item
             android:id="@+id/timetable_menu_item"
             android:icon="@drawable/schedule"
-            android:title="Timetable" />
+            android:title="@string/timetable" />
         <item
             android:id="@+id/calendar_menu_item"
             android:icon="@drawable/time_table"
-            android:title="Calendar" />
+            android:title="@string/calendar" />
     </group>
 </menu>

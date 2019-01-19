@@ -3,18 +3,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingLeft="15dp"
-    android:paddingTop="10dp">
+    android:paddingStart="15dp"
+    android:paddingTop="10dp"
+    tools:ignore="RtlSymmetry">
 
     <TextView
         android:id="@+id/notification_content_text_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="15dp"
-        android:layout_toLeftOf="@+id/dot_view"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="15dp"
+        android:layout_toStartOf="@+id/dot_view"
         android:textColor="#3b3b3b"
         android:textSize="14sp"
         tools:text="Nice, This is test notification" />
@@ -23,9 +24,9 @@
         android:id="@+id/time_text_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_below="@+id/notification_content_text_view"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="2dp"
         android:textColor="#c4c4c4"
         android:textSize="13sp"
@@ -35,9 +36,9 @@
         android:id="@+id/dot_view"
         android:layout_width="10dp"
         android:layout_height="10dp"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
-        android:layout_marginRight="15dp"
+        android:layout_marginEnd="15dp"
         android:background="@drawable/rounded_dot_drawable" />
 
     <View
@@ -45,6 +46,6 @@
         android:layout_height="1dp"
         android:layout_below="@+id/time_text_view"
         android:layout_marginTop="8dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:background="#b4cccccc" />
 </RelativeLayout>

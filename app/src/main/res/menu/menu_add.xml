@@ -4,6 +4,6 @@
     <item
         android:id="@+id/menu_add"
         android:icon="@drawable/add"
-        android:title="Notification"
+        android:title="@string/notification"
         app:showAsAction="always" />
 </menu>
