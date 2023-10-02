@@ -15,7 +15,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".LoginActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -23,7 +23,8 @@
         </activity>
         <activity
             android:name=".NotificationActivity"
-            android:label="Notification">
+            android:label="Notification"
+            android:exported="true">
             <intent-filter>
                 <!--<action android:name="android.intent.action.MAIN" />-->
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -35,7 +36,8 @@
         <activity
             android:name=".ManageListFragment"
             android:label="Manage List" />
-        <activity android:name=".HomeFragment">
+        <activity android:name=".HomeFragment"
+            android:exported="true">
             <intent-filter>
                 <!--<action android:name="android.intent.action.MAIN" />-->
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -55,7 +57,8 @@
             android:label="Add Assignment" />
         <activity
             android:name=".AssignmentStatusActivity"
-            android:label="Assignment Status">
+            android:label="Assignment Status"
+            android:exported="true">
             <intent-filter>
                 <!--<action android:name="android.intent.action.MAIN" />-->
                 <category android:name="android.intent.category.LAUNCHER" />

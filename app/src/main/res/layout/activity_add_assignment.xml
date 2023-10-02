@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <android.support.design.widget.TextInputLayout
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/hints_title">
@@ -18,9 +18,9 @@
             android:textSize="15sp"
             android:inputType="text"
             tools:ignore="LabelFor" />
-    </android.support.design.widget.TextInputLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <android.support.design.widget.TextInputLayout
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/hints_unit">
@@ -29,12 +29,12 @@
             android:id="@+id/assignment_unit_edit_text"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:inputType="text"
             android:textSize="15sp"
-            tools:ignore="LabelFor"
-            android:inputType="text" />
-    </android.support.design.widget.TextInputLayout>
+            tools:ignore="LabelFor" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <android.support.design.widget.TextInputLayout
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/hints_description">
@@ -46,9 +46,9 @@
             android:textSize="15sp"
             android:inputType="text"
             tools:ignore="LabelFor" />
-    </android.support.design.widget.TextInputLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <android.support.design.widget.TextInputLayout
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/hints_mark">
@@ -60,9 +60,9 @@
             android:inputType="number"
             android:textSize="15sp"
             tools:ignore="LabelFor" />
-    </android.support.design.widget.TextInputLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <android.support.design.widget.TextInputLayout
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/hints_mark_obtained">
@@ -74,7 +74,7 @@
             android:inputType="number"
             android:textSize="15sp"
             tools:ignore="LabelFor" />
-    </android.support.design.widget.TextInputLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/add_assignment_button"
