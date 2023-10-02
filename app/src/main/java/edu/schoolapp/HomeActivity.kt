@@ -7,7 +7,10 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.browser.customtabs.CustomTabColorSchemeParams
 import androidx.browser.customtabs.CustomTabsIntent
+import androidx.browser.customtabs.CustomTabsIntent.SHARE_STATE_DEFAULT
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
@@ -28,8 +31,6 @@ class HomeActivity : AppCompatActivity(), PrimaryMenuSelectListener {
         primaryMenuRecyclerView.layoutManager = GridLayoutManager(this, 3)
         primaryMenuAdapter = PrimaryMenuAdapter(primaryMenuList, this)
         primaryMenuRecyclerView.adapter = primaryMenuAdapter
-
-//        getPrimaryMenu();
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -130,8 +131,17 @@ class HomeActivity : AppCompatActivity(), PrimaryMenuSelectListener {
     private fun openWebLink() {
         val url = "https://www.google.com/"
         val customTabsIntent = CustomTabsIntent.Builder()
-            .addDefaultShareMenuItem()
-            .setToolbarColor(resources.getColor(R.color.colorPrimary))
+            .setShareState(SHARE_STATE_DEFAULT)
+            .setDefaultColorSchemeParams(
+                CustomTabColorSchemeParams.Builder()
+                    .setToolbarColor(
+                        ContextCompat.getColor(
+                            this@HomeActivity,
+                            R.color.colorPrimary
+                        )
+                    )
+                    .build()
+            )
             .setShowTitle(true)
             .build()
         customTabsIntent.launchUrl(this, Uri.parse(url))

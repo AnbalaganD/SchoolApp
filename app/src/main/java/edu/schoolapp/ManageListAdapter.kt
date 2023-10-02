@@ -34,13 +34,13 @@ class ManageListAdapter(private var manageList: MutableList<PrimaryMenuModel>?) 
         return convertView
     }
 
-    fun updateData(list: List<PrimaryMenuModel>?) {
+    fun updateData(list: List<PrimaryMenuModel>) {
         if (manageList == null) {
-            manageList = ArrayList()
+            manageList = mutableListOf()
         } else {
             manageList!!.clear()
         }
-        manageList!!.addAll(list!!)
+        manageList!!.addAll(list)
         notifyDataSetChanged()
     }
 

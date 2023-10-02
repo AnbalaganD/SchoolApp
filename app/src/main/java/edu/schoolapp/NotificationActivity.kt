@@ -13,8 +13,8 @@ class NotificationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_notification)
         val actionBar = supportActionBar
-        actionBar!!.setHomeAsUpIndicator(R.drawable.close)
-        actionBar.setDisplayHomeAsUpEnabled(true)
+        actionBar?.setHomeAsUpIndicator(R.drawable.close)
+        actionBar?.setDisplayHomeAsUpEnabled(true)
         val notificationRecyclerView = findViewById<RecyclerView>(R.id.notification_recycler_view)
         notificationRecyclerView.layoutManager = LinearLayoutManager(this)
         notificationList = mutableListOf()

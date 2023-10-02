@@ -14,7 +14,7 @@ import edu.schoolapp.SchoolApp.Companion.token
 import java.util.Locale
 
 class ManageListFragment : AppCompatActivity() {
-    private var manageListAdapter: ManageListAdapter? = null
+    private lateinit var manageListAdapter: ManageListAdapter
     private var manageList: MutableList<PrimaryMenuModel>? = null
     private lateinit var db: FirebaseFirestore
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,7 +45,7 @@ class ManageListFragment : AppCompatActivity() {
         manageListView.onItemClickListener = OnItemClickListener { _, _, position, _ ->
                 val manageListModel: PrimaryMenuModel = manageList!![position]
                 manageListModel.isSelected = !manageListModel.isSelected
-                manageListAdapter!!.notifyDataSetChanged()
+                manageListAdapter.notifyDataSetChanged()
             }
 
         getPrimaryManageList()
@@ -59,9 +59,9 @@ class ManageListFragment : AppCompatActivity() {
     }
 
     private fun getPrimaryManageList() {
-        db.collection("users").document((token)!!).collection("primaryMenus").get()
+        db.collection("users").document(token!!).collection("primaryMenus").get()
             .addOnSuccessListener { queryDocumentSnapshots ->
-                manageList = ArrayList()
+                manageList = mutableListOf()
                 if (!queryDocumentSnapshots.isEmpty) {
                     for (snapshot: QueryDocumentSnapshot in queryDocumentSnapshots) {
                         val pMenu = snapshot.toObject(
@@ -69,7 +69,7 @@ class ManageListFragment : AppCompatActivity() {
                         )
                         getPrimaryMenuModel(pMenu)?.let { manageList?.add(it) }
                     }
-                    manageListAdapter!!.updateData(manageList)
+                    manageList?.let { manageListAdapter.updateData(it) }
                 }
             }
     }
