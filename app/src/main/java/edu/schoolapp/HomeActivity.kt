@@ -150,12 +150,15 @@ class HomeActivity : AppCompatActivity(), PrimaryMenuSelectListener {
     private fun openGmailApp() {
         val intent = Intent(Intent.ACTION_SEND)
         intent.type = "text/plain"
-        val pm = packageManager
-        val matches = pm.queryIntentActivities(intent, 0)
+        val matches = packageManager.queryIntentActivities(intent, 0)
         var best: ResolveInfo? = null
-        for (info in matches) if (info.activityInfo.packageName.endsWith(".gm") ||
-            info.activityInfo.name.lowercase(Locale.getDefault()).contains("gmail")
-        ) best = info
+        for (info in matches) {
+            if (info.activityInfo.packageName.endsWith(".gm") ||
+                info.activityInfo.name.lowercase(Locale.getDefault()).contains("gmail")
+            ) {
+                best = info
+            }
+        }
         if (best != null) intent.setClassName(best.activityInfo.packageName, best.activityInfo.name)
         startActivity(intent)
     }
