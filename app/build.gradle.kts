@@ -40,8 +40,8 @@ android {
 
 dependencies {
     implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("androidx.constraintlayout:constraintlayout:2.2.0-alpha12")
-    implementation("com.google.android.material:material:1.9.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.2.0-alpha13")
+    implementation("com.google.android.material:material:1.10.0")
     implementation("androidx.cardview:cardview:1.0.0")
     implementation("com.google.firebase:firebase-database:20.2.2")
     implementation("com.google.firebase:firebase-auth:22.1.2")
