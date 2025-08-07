@@ -85,7 +85,8 @@ class AddAssignmentActivity : AppCompatActivity() {
         } else if (markObtainedEditText.text == null || markObtainedEditText.text.toString()
                 .trim { it <= ' ' }
                 .isEmpty() || !tryParseInt(
-                markObtainedEditText.text.toString().trim { it <= ' ' })
+                markObtainedEditText.text.toString().trim { it <= ' ' }
+                )
         ) {
             Toast.makeText(this, "Enter Mark Obtained", Toast.LENGTH_SHORT).show()
             isValid = false
@@ -96,7 +97,7 @@ class AddAssignmentActivity : AppCompatActivity() {
     private fun tryParseInt(s: String): Boolean {
         try {
             s.toInt()
-        } catch (ex: Exception) {
+        } catch (_: Exception) {
             return false
         }
         return true

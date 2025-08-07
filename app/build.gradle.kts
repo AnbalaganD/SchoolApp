@@ -1,15 +1,18 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.google.services)
 }
 
 android {
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "edu.schoolapp"
         minSdk = 26
-        targetSdk = 35
+        targetSdk = 36
         versionCode = 1
         versionName = "1.0"
     }
@@ -19,8 +22,10 @@ android {
         targetCompatibility = JavaVersion.VERSION_11
     }
 
-    kotlinOptions {
-        jvmTarget = "11"
+    kotlin {
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_11)
+        }
     }
 
     buildTypes {
@@ -39,17 +44,23 @@ android {
 dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.constraintlayout)
-    implementation(libs.material)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.credentials)
     implementation(libs.androidx.cardview)
-    implementation(libs.firebase.database)
+    implementation(libs.kotlinx.coroutines.android)
+
+    implementation(libs.material)
+
+    implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.auth)
     implementation(libs.firebase.core)
-    implementation(libs.play.services.auth)
     implementation(libs.firebase.firestore)
+    implementation(libs.firebase.database)
+
+    implementation(libs.play.services.auth)
+
     implementation(libs.androidx.browser)
     implementation(libs.mpandroidchart)
-    implementation(libs.kotlinx.coroutines.android)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
+
     implementation(libs.googleid)
-    implementation(libs.androidx.credentials)
 }

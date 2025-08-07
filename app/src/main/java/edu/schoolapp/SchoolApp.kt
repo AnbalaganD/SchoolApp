@@ -3,11 +3,13 @@ package edu.schoolapp
 import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
+import androidx.core.content.edit
 import com.google.firebase.database.FirebaseDatabase
 
 class SchoolApp : Application() {
     override fun onCreate() {
         super.onCreate()
+
         appContext = this
         sharedPreferences = getSharedPreferences(this.javaClass.simpleName, MODE_PRIVATE)
         FirebaseDatabase.getInstance().setPersistenceEnabled(true)
@@ -24,29 +26,29 @@ class SchoolApp : Application() {
         var token: String?
             get() = sharedPreferences?.getString("token", null)
             set(value) {
-                sharedPreferences?.apply {
-                    edit().putString("token", value).apply()
+                sharedPreferences?.edit {
+                    putString("token", value)
                 }
             }
         var name: String?
             get() = sharedPreferences?.getString("userName", null)
             set(value) {
-                sharedPreferences?.apply {
-                    edit() .putString("userName", value).apply()
+                sharedPreferences?.edit {
+                    putString("userName", value)
                 }
             }
         var email: String?
             get() = sharedPreferences?.getString("email", null)
             set(value) {
-                sharedPreferences?.apply{
-                    edit().putString("email", value).apply()
+                sharedPreferences?.edit {
+                    putString("email", value)
                 }
             }
         var profileUrl: String?
             get() = sharedPreferences?.getString("profileUrl", null)
             set(value) {
-                sharedPreferences?.apply{
-                    edit().putString("profileUrl", value).apply()
+                sharedPreferences?.edit {
+                    putString("profileUrl", value)
                 }
             }
 

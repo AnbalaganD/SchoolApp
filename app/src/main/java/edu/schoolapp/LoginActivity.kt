@@ -1,24 +1,17 @@
 package edu.schoolapp
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount
-import com.google.android.gms.auth.api.signin.GoogleSignInClient
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import androidx.lifecycle.lifecycleScope
 import com.google.android.gms.common.SignInButton
 import com.google.firebase.firestore.FirebaseFirestore
-import edu.schoolapp.SchoolApp.Companion.email
-import edu.schoolapp.SchoolApp.Companion.name
-import edu.schoolapp.SchoolApp.Companion.profileUrl
-import edu.schoolapp.SchoolApp.Companion.token
+import edu.schoolapp.googleSingIn.GoogleAuthenticationService
+import kotlinx.coroutines.launch
 
 class LoginActivity : AppCompatActivity() {
-    private lateinit var googleSignInClient: GoogleSignInClient
     private lateinit var db: FirebaseFirestore
+    private val googleAuthenticationService = GoogleAuthenticationService()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,26 +19,25 @@ class LoginActivity : AppCompatActivity() {
         db = FirebaseFirestore.getInstance()
         val googleSignInButton = findViewById<SignInButton>(R.id.google_sign_in_button)
 
-        val googleSignInOptions = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestEmail()
-            .build()
-
-        googleSignInClient = GoogleSignIn.getClient(this@LoginActivity, googleSignInOptions)
-
         googleSignInButton.setOnClickListener {
-            resultLauncher.launch(googleSignInClient.signInIntent)
+            lifecycleScope.launch {
+                val user = googleAuthenticationService.signIn(this@LoginActivity)
+                if (user != null) {
+                    checkUserExits(user.userId, user.userName, user.email)
+                }
+            }
         }
     }
 
-    private fun checkUserExits(account: GoogleSignInAccount) {
+    private fun checkUserExits(userId: String, name: String, email: String?) {
         val documentReference = db.collection("users").document(
-            account.id!!
+            userId
         )
         documentReference.get().addOnSuccessListener { documentSnapshot ->
             if (documentSnapshot.exists()) {
                 navigateToHome()
             } else {
-                documentReference.set(User(account.email, account.displayName))
+                documentReference.set(User(name, email))
             }
         }
     }
@@ -55,20 +47,4 @@ class LoginActivity : AppCompatActivity() {
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         startActivity(intent)
     }
-
-    private val resultLauncher =
-        registerForActivityResult(
-            ActivityResultContracts.StartActivityForResult()
-        ) {
-            if (it.resultCode == Activity.RESULT_OK) {
-                val task = GoogleSignIn.getSignedInAccountFromIntent(it.data)
-                if (task.isSuccessful) {
-                    token = task.result.id
-                    email = task.result.email
-                    name = task.result.displayName
-                    profileUrl = task.result.photoUrl.toString()
-                    checkUserExits(task.result)
-                }
-            }
-        }
 }

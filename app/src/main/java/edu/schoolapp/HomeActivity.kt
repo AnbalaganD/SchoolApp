@@ -18,6 +18,7 @@ import com.google.firebase.firestore.QuerySnapshot
 import edu.schoolapp.model.PrimaryMenuDao
 import edu.schoolapp.SchoolApp.Companion.token
 import java.util.Locale
+import androidx.core.net.toUri
 
 class HomeActivity : AppCompatActivity(), PrimaryMenuSelectListener {
     private lateinit var primaryMenuAdapter: PrimaryMenuAdapter
@@ -144,7 +145,7 @@ class HomeActivity : AppCompatActivity(), PrimaryMenuSelectListener {
             )
             .setShowTitle(true)
             .build()
-        customTabsIntent.launchUrl(this, Uri.parse(url))
+        customTabsIntent.launchUrl(this, url.toUri())
     }
 
     private fun openGmailApp() {

@@ -9,9 +9,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory
 import androidx.lifecycle.lifecycleScope
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInClient
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import edu.schoolapp.googleSingIn.GoogleAuthenticationService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.net.URL
@@ -22,7 +20,9 @@ class SettingsActivity : AppCompatActivity() {
     private lateinit var emailTextView: TextView
     private lateinit var managePrimaryMenuTextView: TextView
     private lateinit var logoutTextView: TextView
-    private lateinit var googleSignInClient: GoogleSignInClient
+
+    private val googleAuthenticationService = GoogleAuthenticationService()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
@@ -45,10 +45,7 @@ class SettingsActivity : AppCompatActivity() {
         }
 
         logoutTextView.setOnClickListener {
-            val account = GoogleSignIn.getLastSignedInAccount(this@SettingsActivity)
-            account.let {
-                googleSignInClient.signOut()
-            }
+            googleAuthenticationService.logout()
             SchoolApp.clearSharedPreference()
             val intent = Intent(this@SettingsActivity, LoginActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
@@ -56,14 +53,6 @@ class SettingsActivity : AppCompatActivity() {
         }
 
         downloadProfileImage()
-    }
-
-    override fun onStart() {
-        super.onStart()
-        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestEmail()
-            .build()
-        googleSignInClient = GoogleSignIn.getClient(this@SettingsActivity, gso)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -74,11 +63,11 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     private fun downloadProfileImage() {
-       lifecycleScope.launch(Dispatchers.IO) {
-           val bitmap = BitmapFactory.decodeStream(URL(SchoolApp.profileUrl).openStream())
-           val roundedBitmapDrawable = RoundedBitmapDrawableFactory.create(resources, bitmap)
-           roundedBitmapDrawable.isCircular = true
-           userImageView.setImageDrawable(roundedBitmapDrawable)
-       }
+        lifecycleScope.launch(Dispatchers.IO) {
+            val bitmap = BitmapFactory.decodeStream(URL(SchoolApp.profileUrl).openStream())
+            val roundedBitmapDrawable = RoundedBitmapDrawableFactory.create(resources, bitmap)
+            roundedBitmapDrawable.isCircular = true
+            userImageView.setImageDrawable(roundedBitmapDrawable)
+        }
     }
 }
