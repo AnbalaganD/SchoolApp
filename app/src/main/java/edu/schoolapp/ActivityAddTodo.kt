@@ -49,7 +49,7 @@ class ActivityAddTodo : AppCompatActivity() {
     private fun clearData() {
         titleEditText.setText("")
         descriptionEditText.setText("")
-        dateEditText.setText("Select date")
+        dateEditText.setText(getString(R.string.select_date))
     }
 
     private fun validateData(): Boolean {

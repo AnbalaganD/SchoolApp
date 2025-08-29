@@ -30,4 +30,5 @@
     <string name="drive">Drive</string>
     <string name="timetable">Timetable</string>
     <string name="calendar">Calendar</string>
+    <string name="select_date">Select date</string>
 </resources>
