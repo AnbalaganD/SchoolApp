@@ -15,6 +15,7 @@ class AssignmentActivity : AppCompatActivity() {
     private lateinit var assignmentAdapter: AssignmentAdapter
     private lateinit var assignmentList: MutableList<AssignmentModel>
     private lateinit var db: FirebaseFirestore
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fragment_assignment)

@@ -16,6 +16,7 @@ class AddAssignmentActivity : AppCompatActivity() {
     private lateinit var markEditText: EditText
     private lateinit var markObtainedEditText: EditText
     private lateinit var db: FirebaseFirestore
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_assignment)
